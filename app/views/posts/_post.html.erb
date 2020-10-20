@@ -1,0 +1,16 @@
+</h4>
+  <strong>Title: </strong>
+  <%= post.title %>
+</h4>
+ <p>
+  by: 
+  <%= post.user.username %>
+ </p>
+<p>
+  <%= post.body %>
+  <%= post.id %>
+</p>
+
+<p>
+    <%= link_to 'Delete Post', [post.user, post], method: :delete %>
+</p>
