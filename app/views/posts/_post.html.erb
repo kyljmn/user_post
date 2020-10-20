@@ -8,9 +8,8 @@
  </p>
 <p>
   <%= post.body %>
-  <%= post.id %>
 </p>
 
 <p>
-    <%= link_to 'Delete Post', [post.user, post], method: :delete %>
+    <%= link_to 'Delete Post', user_post_path(post.user.id, post.id), method: :delete %>
 </p>
