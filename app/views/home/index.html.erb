@@ -1,0 +1,7 @@
+<h1>Welcome!</h1>
+<% if user_signed_in? %>
+  <% @posts.map do |post|%>
+    <%= render post %>
+  <% end %>
+  <%= link_to "Your Posts", posts_path %>
+<% end %>
