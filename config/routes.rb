@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   resources :posts
 
-  root 'welcome#index'
+  resources :home, only: [:index]
+
+  root 'home#index'
 
 end
