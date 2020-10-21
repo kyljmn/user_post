@@ -1,1 +1,4 @@
 <h1>Welcome!</h1>
+<% if user_signed_in? %>
+  <%= link_to "Your Posts", posts_path %>
+<% end %>
