@@ -1,12 +1,12 @@
-<%= form_with(model: @post, url: url,  local: true) do |form| %>
+<%= form_with(model: @post, local: true) do |form| %>
   <p>
     <%= form.label :title %>
     <%= form.text_field :title %>
   </p>
 
   <p>
-    <%= form.label :body %>
-    <%= form.text_area :body %>
+    <%= form.label :text %>
+    <%= form.text_area :text %>
   </p>
 
   <%= form.submit %>

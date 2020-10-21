@@ -1,25 +1,52 @@
 class PostsController < ApplicationController
-  before_action :user_from_param, only: [:create, :destroy]
+  before_action :authenticate_user!
   
+  def index
+    @posts = current_user.posts
+  end
+
+  def show
+    @post = Post.find(params[:id])
+  end
+
+  def new
+    @post = Post.new
+  end
+
+  def edit
+    @post = Post.find(params[:id])
+    redirect_if_not_auth
+  end  
+    
   def create
-    @post = @user.posts.create(posts_param)
-    redirect_to user_path(@user)
+    @post = current_user.posts.create(posts_param)
+    redirect_to posts_path
+  end
+
+  def update
+    @post = current_user.posts.find(params[:id])
+    redirect_if_not_auth
+    if @post.update(post_params)
+      redirect_to post_show(@post)
+    else
+      render 'edit'
+    end
   end
   
   def destroy
-    @post = @user.posts.find(params[:id])
+    @post = current_user.posts.find(params[:id])
     @post.destroy
-    redirect_to user_path(@user)
+    redirect_to posts_path
   end
   
   private
 
     def posts_param
-      params.require(:post).permit(:title, :body)
+      params.require(:post).permit(:title, :text)
     end
-    
-    def user_from_param
-      @user = User.find(params[:user_id])
+
+    def redirect_if_not_auth
+      redirect_to root if @post.user.id != current_user.id
     end
 
 end

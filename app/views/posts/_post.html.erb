@@ -1,15 +1,8 @@
-</h4>
-  <strong>Title: </strong>
-  <%= post.title %>
-</h4>
- <p>
-  by: 
-  <%= post.user.username %>
- </p>
-<p>
-  <%= post.body %>
-</p>
-
-<p>
-    <%= link_to 'Delete Post', user_post_path(post.user.id, post.id), method: :delete %>
-</p>
+<h3><%= post.title %></h3>
+<p><%= "by: " + post.user.username %></p>
+<p><%= post.text %></p>
+<% if current_user.id == post.user.id %>
+  <%= link_to "Show Post", post_path(post) %>
+  <%= link_to "Edit Post", edit_post_path(post) %>
+  <%= link_to "Delete Post", post_path(post), method: :delete %>
+<% end %>
