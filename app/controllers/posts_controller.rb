@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   
-  before_action :check_param_user_current_user, except: %i[index, show]
+  before_action :check_param_user_current_user, except: %i[index show]
   
   def index
     @user = User.find(params[:user_id])
@@ -24,23 +24,23 @@ class PostsController < ApplicationController
     if @post.errors.any?
       render "new"
     else
-      redirect_to posts_path
+      redirect_to user_posts_path
     end
   end
 
   def update
     @post = @user.posts.find(params[:id])
     if @post.update(post_params)
-      redirect_to post_path(@post)
+      redirect_to user_post_path(@user, @post)
     else
       render 'edit'
     end
   end
   
   def destroy
-    @post = current_user.posts.find(params[:id])
+    @post = @user.posts.find(params[:id])
     @post.destroy
-    redirect_to posts_path
+    redirect_to user_posts_path(@user)
   end
   
   private

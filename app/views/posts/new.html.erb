@@ -1,3 +1,3 @@
 <h1> New Post </h1>
-<%= render "form" %>
-<%= link_to "Cancel", posts_path %>
+<%= render partial: "form", locals: {url: user_posts_path(@user.id)} %>
+<%= link_to "Cancel", user_posts_path(@user.id) %>

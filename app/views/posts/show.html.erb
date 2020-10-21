@@ -1,2 +1,8 @@
-<% post = @post %>
-<%= render post %>
+<h3><strong>Title:</strong> <%= @post.title%></h3>
+<p><strong>Author:</strong> <%= link_to @post.user.username, user_posts_path(@post.user.id) %></p>
+<p><strong>Body:</strong> <%= @post.text %></p>
+<%= link_to @post.user.username + "'s Posts", user_posts_path(@post.user.id) %>
+<% if current_user.id == @post.user.id %>
+  | <%= link_to "Edit Post", edit_user_post_path(@post.user.id, @post.id) %> |
+  <%= link_to "Delete Post", user_post_path(@post.user.id, @post.id), method: :delete %>
+<% end %>
