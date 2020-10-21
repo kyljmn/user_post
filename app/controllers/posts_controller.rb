@@ -1,9 +1,10 @@
 class PostsController < ApplicationController
   
-  before_action :authenticate_user!
+  before_action :check_param_user_current_user, except: %i[index, show]
   
   def index
-    @posts = current_user.posts
+    @user = User.find(params[:user_id])
+    @posts = @user.posts
   end
 
   def show
@@ -15,12 +16,11 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @post = Post.find(params[:id])
-    redirect_if_not_auth
+    @post = @user.posts.find(params[:id])
   end  
     
   def create
-    @post = current_user.posts.create(post_params)
+    @post = @user.posts.create(post_params)
     if @post.errors.any?
       render "new"
     else
@@ -29,8 +29,7 @@ class PostsController < ApplicationController
   end
 
   def update
-    @post = current_user.posts.find(params[:id])
-    redirect_if_not_auth
+    @post = @user.posts.find(params[:id])
     if @post.update(post_params)
       redirect_to post_path(@post)
     else
@@ -50,8 +49,14 @@ class PostsController < ApplicationController
       params.require(:post).permit(:title, :text)
     end
 
-    def redirect_if_not_auth
-      redirect_to root_path if @post.user.id != current_user.id
+    def check_param_user_current_user
+      :authenticate_user!
+      @user = User.find(params[:user_id])
+      redirect_if_not_auth
     end
 
+    def redirect_if_not_auth
+      redirect_to root_path if @user.id != current_user.id
+    end
+    
 end
