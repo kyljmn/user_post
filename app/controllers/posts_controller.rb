@@ -19,19 +19,15 @@ class PostsController < ApplicationController
   end  
     
   def create
-    @post = current_user.posts.create(post_params)
-    if @post.errors.any?
-      render "new"
-    else
-      redirect_to posts_path
-    end
+    @post = current_user.posts.create(posts_param)
+    redirect_to posts_path
   end
 
   def update
     @post = current_user.posts.find(params[:id])
     redirect_if_not_auth
     if @post.update(post_params)
-      redirect_to post_path(@post)
+      redirect_to post_show(@post)
     else
       render 'edit'
     end
@@ -45,12 +41,12 @@ class PostsController < ApplicationController
   
   private
 
-    def post_params
+    def posts_param
       params.require(:post).permit(:title, :text)
     end
 
     def redirect_if_not_auth
-      redirect_to root_path if @post.user.id != current_user.id
+      redirect_to root if @post.user.id != current_user.id
     end
 
 end
