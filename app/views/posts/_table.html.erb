@@ -1,0 +1,10 @@
+<table>
+      <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Actions</th>
+      </tr>
+      <% @posts.map do |post| %>
+        <%= render partial: "posts/post", locals: {post: post} %>
+      <% end %>
+</table>

@@ -1,5 +1,2 @@
-<h1>Your Posts</h1>
-<%= link_to "New Post", new_post_path %>
-<% @posts.map do |post| %>
-  <%= render post %>
-<% end %>
+<h1><%= @user.username %>'s Posts</h1>
+<%= render partial: "table", object: @posts %>

@@ -11,7 +11,9 @@
 
   <body>
     <% if user_signed_in? %>
-      <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+      <%= link_to "Home", root_path %> ||
+      <%= link_to current_user.username, user_posts_path(current_user.id) %> ||
+      <%= link_to "Sign out", destroy_user_session_path, method: :delete %> 
     <% else %>
       <%= link_to "Register", new_user_registration_path %> ||
       <%= link_to "Sign in", new_user_session_path %>
