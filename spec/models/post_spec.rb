@@ -8,30 +8,29 @@ RSpec.describe Post, type: :model do
   let(:post5) { FactoryBot.build :post, text: "no"}
   let(:post6) { FactoryBot.build :post, title: Faker::Lorem.paragraph_by_chars(number: 51, supplemental: false) }
 
-  context "when validating" do
+  context "when validating a post" do
     it "is valid with valid attributes" do
       expect(post1).to be_valid
     end
 
-    context "the title" do
-      it "isn't valid if it is empty" do
-        expect(post2).to_not be_valid
-      end
-      it "isn't valid if it has less than 3 chars" do
-        expect(post3).to_not be_valid
-      end
-      it "isn't valid if it has more than 50 chars" do
-        expect(post6).to_not be_valid
-      end
+    it "isn't valid if title is empty" do
+      expect(post2).to_not be_valid
+    end
+    
+    it "isn't valid if title has less than 3 chars" do
+      expect(post3).to_not be_valid
     end
 
-    context "the text" do
-      it "isn't valid if it is empty" do
-        expect(post4).to_not be_valid
-      end
-      it "isn't valid if it has less than 3 chars" do
-        expect(post5).to_not be_valid
-      end
+    it "isn't valid if title has more than 50 chars" do
+      expect(post6).to_not be_valid
+    end
+
+    it "isn't valid if text is empty" do
+      expect(post4).to_not be_valid
+    end
+
+    it "isn't valid if text has less than 3 chars" do
+      expect(post5).to_not be_valid
     end
   end
 end
