@@ -1,0 +1,84 @@
+@import "variables.scss"
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  background-color: $theme-blue;
+  font-size: 12;
+  font-family: Arial;
+}
+
+.nav {
+  color: white;
+  margin-bottom: 50px;
+
+  > a, a:hover, a:visited {
+    text-decoration: none;
+    color: white;
+  }
+}
+
+.form-body {
+  display: flex;
+  flex-flow: column wrap;
+  width: 352px;
+  padding: 16px 32px;
+  background-color: white;
+  border-radius: 8px;
+  justify-content: center;
+  
+  
+  > .header {
+    font-size: (1.2*1.2*1.2)em;
+    font-style: italic;
+    font-weight: bold;
+  }
+  >.field {
+    height: 64px;
+    margin-bottom: 8px;
+    >.label{
+      font-size: (1.2*1.2)em;
+    }
+
+    >.input {
+      height: 32px;
+      padding: 8px;
+      border: 1px solid grey;
+      border-radius: 4px;
+    }
+  }
+
+  > .option {
+    color: #1371cf;
+  }
+
+  > .button {
+    height: 32px;
+    background-color: #1371cf;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    margin-bottom: 8px;
+    font-weight: bold;
+  }
+  
+  > .shared {
+    text-align: center;
+    font-size: 12*1.2px;
+    
+    > .link {
+      text-decoration: none;
+      color: #1371cf;
+    }
+  }
+}
