@@ -9,11 +9,9 @@ RSpec.describe User, type: :model do
   let(:user6) { FactoryBot.build :user, last_name: "" }
   let(:user7) { FactoryBot.build :user, last_name: "B" }
 
-  context "When validating" do
-    context "a valid user" do
-      it "is valid" do
-        expect(user1).to be_valid
-      end
+  context "when validating" do
+    it "is valid with valid attributes" do
+      expect(user1).to be_valid
     end
 
     context "the username" do

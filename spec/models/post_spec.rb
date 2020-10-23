@@ -8,11 +8,9 @@ RSpec.describe Post, type: :model do
   let(:post5) { FactoryBot.build :post, text: "no"}
   let(:post6) { FactoryBot.build :post, title: Faker::Lorem.paragraph_by_chars(number: 51, supplemental: false) }
 
-  context "Validating" do
-    context "a valid post" do
-      it "is valid" do
-        expect(post1).to be_valid
-      end
+  context "when validating" do
+    it "is valid with valid attributes" do
+      expect(post1).to be_valid
     end
 
     context "the title" do
