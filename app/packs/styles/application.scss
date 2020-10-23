@@ -1,3 +1,5 @@
+@import "variables.scss"
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -11,14 +13,14 @@ body {
   align-items: center;
   padding: 0;
   margin: 0;
-  background-color: #1371cf;
+  background-color: $theme-blue;
   font-size: 12;
   font-family: Arial;
 }
 
 .nav {
   color: white;
-  margin-bottom: 16px;
+  margin-bottom: 50px;
 
   > a, a:hover, a:visited {
     text-decoration: none;
@@ -35,24 +37,21 @@ body {
   border-radius: 8px;
   justify-content: center;
   
+  
   > .header {
     font-size: (1.2*1.2*1.2)em;
+    font-style: italic;
     font-weight: bold;
-    margin-bottom: 8px;
-    align-self: center;
   }
-
   >.field {
     height: 64px;
     margin-bottom: 8px;
-
     >.label{
       font-size: (1.2*1.2)em;
     }
 
     >.input {
       height: 32px;
-      width: 100%;
       padding: 8px;
       border: 1px solid grey;
       border-radius: 4px;
@@ -61,7 +60,6 @@ body {
 
   > .option {
     color: #1371cf;
-    margin-bottom: 8px;
   }
 
   > .button {
