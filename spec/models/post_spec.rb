@@ -19,7 +19,7 @@ RSpec.describe Post, type: :model do
       it "isn't valid if it is empty" do
         expect(post2).to_not be_valid
       end
-      it "isn't valid if it has less than 3 char" do
+      it "isn't valid if it has less than 3 chars" do
         expect(post3).to_not be_valid
       end
       it "isn't valid if it has more than 50 chars" do
@@ -31,7 +31,7 @@ RSpec.describe Post, type: :model do
       it "isn't valid if it is empty" do
         expect(post4).to_not be_valid
       end
-      it "isn't valid if it has less than 3 char" do
+      it "isn't valid if it has less than 3 chars" do
         expect(post5).to_not be_valid
       end
     end
